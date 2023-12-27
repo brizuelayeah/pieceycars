@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    {% if pieces_for_user_car %}
+        <br>
+        <br>
+        <h2 style="text-align: center;">These are the car pieces available for the car you selected, {{ user["username"] }}:</h2>
+        <div class="pieces-container">
+            {% for piece in pieces_for_user_car %}
+            <div class="piece-card">
+                <img class="all-pieces-images" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">
+                <h3>{{ piece["name"] }}</h3>
+                <strong>{{ piece["car_brand"] }}</strong>
+                <strong>{{ piece["car_model_set"] }}</strong>
+                <br>
+                <td>This piece was used in a {{ piece["car_year"] }} car</td>
+                <br>
+                <td>This piece was bought in {{ piece["piece_year"] }}</td>
+                <br>
+                <a class="piece-owner-profile-link" href="{{ url_for('piece_owner_profile', user_id = user['user_id'], user_visited_id = piece['owner']) }}"><strong>{{ piece["username"] }}</strong></a>
+                <h3>€{{ piece["price"] }}</h3>
+                <td><a class="see-details-link" href="{{ url_for('piece', piece_id = piece['piece_id'], user_id = user['user_id']) }}">See details</a></td>
+            </div>
+            {% endfor %}
+        </div>
+            
+        
+    {% else %}
+        <br>
+        <br>
+        <br>
+        <h3>Sorry, we didn't find any piece for this car: {{ user_car["brand"] }} {{ user_car["model"] }}.
+        Try searching for a different piece although it doesn't belong to your car type</h3>
+        <div class="not-found-links">
+            <a class="add-new-piece-link" href="{{ url_for('add_piece_I_need', user_id = user['user_id']) }}">I want to add a new piece I need</a>
+            <a class="search_piece_depending_on_car-link" href="{{ url_for('search_piece_depending_on_car', user_id = user['user_id']) }}">Try with another of my cars</a>
+        </div>
+        
+    {% endif %}
+{% endblock %}

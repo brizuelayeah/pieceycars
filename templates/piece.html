@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Piece: {{ piece["car_brand"] }} {{ piece["car_model"] }} {{ piece["name"] }}</h1>
+    <div class="piece-individual-card">
+        <img class="image-owner-sells" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">
+        <br>
+        <td>Piece:<strong> {{ piece["name"] }}</strong></td>
+        <br>
+        <td>Brand: <strong>{{ piece["car_brand"] }}</strong></td>
+        <br>
+        <td>Model set: <strong>{{ piece["car_model_set"] }}</strong></td>
+        <br>
+        <td>Model: {{ piece["car_model"] }}</td>
+        <br>
+        <td>Piece ID:{{ piece["piece_id"] }}</td>
+        <h3>Price: €{{ piece["price"] }}</h3>
+        {% if user["user_id"] == piece["owner"] %}
+            <a class="piece-owner-profile-link" href="{{ url_for('piece_owner_profile', user_visited_id = piece['owner'], user_id = user['user_id']) }}">Owner: <strong>You</strong></a>
+        {% else %}
+            <a class="piece-owner-profile-link" href="{{ url_for('piece_owner_profile', user_visited_id = piece['owner'], user_id = user['user_id']) }}">Owner: <strong>{{ piece["username"] }}</strong></a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

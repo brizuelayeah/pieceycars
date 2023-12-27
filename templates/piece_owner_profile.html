@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<br>
+<br>
+<br>
+<h3 style="text-align: center;">Here you can see {{ user_visited["username"] }}'s cars, the pieces he is looking for and the pieces he is selling</h3>
+<p style="text-align: center;">{{ user_visited["username"] }} contact information: <strong>{{ user_visited["mail"] }}</strong> / <strong>{{ user_visited["phone"] }}</strong></p>
+<h2 class="owner-subtitles">{{ user_visited["username"] }}'s cars</h2>
+<div class="cars-container">
+    {% for car in user_visited_cars %}
+        <div class="car-card">
+            <img class="image-owner-cars" src="{{ url_for('static', filename = car['image_URL']) }}" alt="IMAGE">
+            <td><strong>{{ car["brand"] }}</strong></td>
+            <td><strong>{{ car["model_set"] }}</strong></td>
+            <td>{{ car["model"] }}</td>
+            <td>{{ car["year"] }}</td>
+            <td><a class="see-details-link" href="{{ url_for('car', car_id = car['car_id'], user_id = user['user_id']) }}">See details</a></td>
+        </div>       
+    {% endfor %}
+</div>
+
+<h2 class="owner-subtitles">Pieces {{ user_visited["username"] }} is looking for</h2>
+<div class="pieces-container">
+    {% for piece in pieces_user_visited_needs %}
+        <div class="piece-card">
+            <td><strong>{{ piece["name"] }}</strong></td>
+            <td><strong>{{ piece["car_brand"] }}</strong></td>
+            <td><strong>{{ piece["car_model"] }}</strong></td>
+            <td>{{ piece["car_year"] }}</td>
+            <td>{{ piece["piece_year"] }}</td>
+        </div>
+    {% endfor %}
+</div>
+
+<br />
+
+<h2 class="owner-subtitles">Pieces {{ user_visited["username"] }} is selling</h2>
+<div class="pieces-container">
+    {% for piece in pieces_user_visited_sells %}
+        <div class="piece-card">
+            <img class="image-owner-sells" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">
+            <td><strong>{{ piece["name"] }}</strong></td>
+            <br>
+            <td><strong>{{ piece["car_brand"] }}</strong></td>
+            <br>
+            <td><strong>{{ piece["car_model_set"] }}</strong></td>
+            <br>
+            <td>{{ piece["car_model"] }}</td>
+            <br>
+            <td>This piece was used in a {{ piece["car_year"] }} car</td>
+            <br>
+            <td>This piece was bought in {{ piece["piece_year"] }}</td>
+            <br>
+            <td><strong>€{{ piece["price"] }}</strong></td>
+            <td><a class="see-details-link" href="{{ url_for('piece', piece_id = piece['piece_id'], user_id = user['user_id']) }}">See details</a></td>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

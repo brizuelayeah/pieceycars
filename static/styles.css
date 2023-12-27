@@ -1,0 +1,358 @@
+/* LANDING PAGE STYLE*/
+.logo_landing_page {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  height: 30%;
+}
+
+.slogan {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.login-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paragraph-container-login-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.paragraph-container-login-register > div {
+  margin: 0 20px;
+}
+
+.register-login-from-register-login {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #008CBA;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* FORMS STYLE*/
+form {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+  
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+  
+input[type="text"], input[type="password"] {
+  width: 93%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #008CBA;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+select, input[type="submit"] {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  width: 450px;
+}
+
+input[type="submit"]:hover {
+  background-color: #3d7d93;
+}
+
+.login-form, .register-form, .piece-I-need-form, 
+.piece-I-sell-form, .register-my-car-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LINKS STYLE*/
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #00ba47;
+}
+
+.already-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #4a57e3;
+}
+
+.search_piece_depending_on_car-link, .piece-filter-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #42d931;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 50%;
+  margin-left: 65px;
+  margin-right: 10px;
+}
+
+.see-details-link {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #3174d9;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.piece-owner-profile-link{
+  text-align: left;
+  color: blue;
+}
+
+.add-new-piece-link {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+  background-color: #008CBA;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 19.7%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pieces-available-link {
+  display: block;
+  margin-top: 30px;
+  padding: 10px;
+  background-color: #5cda69;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 19.7%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.delete-piece-link {
+  display: block;
+  text-align: left;
+  margin-top: 20px;
+  color: #eb3819;
+}
+
+.not-found-links {
+  display: flex;
+  align-items: center;
+
+}
+
+.not-found-links a{
+  display: inline-block;
+  width: 20%;
+}
+
+/* SUBTITLES STYLES */
+.home-page-subtitle, .your-profile-subtitles, .your-profile-info,
+.owner-subtitles, .added-successfully-subtitle {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-top: 20px;
+  text-align: center;
+}
+  
+/* TABLES CELLS STYLES */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* BODY STYLES */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+  
+/*HEADINGS STYLES*/
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-top: 50px;
+}
+  
+h2 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 20px;
+}
+  
+  
+  
+  /* Create a container for the piece information */
+  .piece-container {  /* NOT NEEDED*/
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin-top: 50px;
+  }
+  
+  /* Style the owner link */
+  .piece-container, a:first-of-type {   /* NOT NEEDED*/
+    margin-top: 0;
+  }
+  
+
+  .image-container {  /* NOT NEEDED*/
+    flex-basis: 50%;
+    text-align: right;
+  }
+
+  .image-container img{   /* NOT NEEDED*/
+    max-width: 100%;
+    height: auto;
+  }
+
+  .piece-details {  /* NOT NEEDED*/
+    flex-basis: 50%;
+  }
+
+  .piece-container {  /* NOT NEEDED*/
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  
+
+/* CONTAINERS STYLES*/
+.pieces-container, .cars-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* CARD STYLES */
+.piece-card, .car-card, .car-individual-card, 
+.piece-individual-card{
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 300px;
+  width: 300px;
+  padding: 10px;
+}
+
+.piece-card img , .car-card img, .car-individual-card img, 
+.piece-individual-card img{
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.piece-card td , .car-card td, .car-individual-card td, 
+.piece-individual-card td{
+  padding: 5px;
+  font-size: 14px;
+}
+
+.piece-card img.all-pieces-images, .car-card img.image-owner-cards {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-owner-sells {
+  height: 100px;
+  width: 100px;
+}
+
+.car-individual-card, .piece-individual-card{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* MENU STYLES*/
+.menu-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.menu-container a {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  background-color: #3174d9;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.menu-container a:hover {
+  background-color: #008CBA;
+}
+
+/* DEVELOPER TEXT*/
+.developer-text {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 10px;
+}
+
+
+
+
+
+

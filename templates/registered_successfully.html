@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>Congratulations, {{ user["username"] }}!</h1>
+<h2 style="text-align: center;">You registered in the system successfully</h2>
+<h3 style="text-align: center;">Now you can see your profile or your home page by logging in button in the top right corner</h3>
+<div class="menu-container">
+    <a href="{{ url_for('login') }}"><img src="logout_icon.png" alt="Icon" style="height: 10px;
+        width: 10px;">Log in</a>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>Welcome to your profile, {{ user["username"] }}</h1>
+<p class="your-profile-info">Here you can see your cars, the pieces you are looking for and the pieces you are selling</p>
+<h2 class="your-profile-subtitles">Your cars</h2>
+<div class="cars-container">
+    {% for car in user_cars %}
+        <div class="car-card">
+            <img class="image-owner-cars" src="{{ url_for('static', filename = car['image_URL']) }}" alt="IMAGE">
+            <td><strong>{{ car["brand"] }}</strong></td>
+            <td><strong>{{ car["model_set"] }}</strong></td>
+            <td>{{ car["model"] }}</td>
+            <td>{{ car["year"] }}</td>
+            <td><a class="see-details-link" href="{{ url_for('car', car_id = car['car_id'], user_id = user['user_id']) }}">See details</a></td>
+            <td><a class="delete-piece-link" href="{{ url_for('delete_car', car_id = car['car_id'], user_id = user['user_id']) }}">Delete this car from my cars</a></td>
+        </div>                
+    {% endfor %}
+</div>
+<a class="add-new-piece-link" href="{{ url_for('register_my_car', user_id = user['user_id']) }}">Register my car</a>
+
+<h2 class="your-profile-subtitles">Pieces you are looking for</h2>
+<div class="pieces-container">
+    {% for piece in pieces_user_needs %}
+        <div class="piece-card">
+            <td><strong>{{ piece["name"] }}</strong></td>
+            <td><strong>{{ piece["car_brand"] }}</strong></td>
+            <td><strong>{{ piece["car_model"] }}</strong></td>
+            <td>{{ piece["car_year"] }}</td>
+            <td>{{ piece["piece_year"] }}</td>
+            <td><a class="delete-piece-link" href="{{ url_for('delete_piece_I_need', piece_id = piece['piece_id'], user_id = user['user_id']) }}">Delete this piece from my needed pieces</a></td>
+        </div>
+        <br>
+    {% endfor %}
+</div>
+    
+<a class="add-new-piece-link" href="{{ url_for('add_piece_I_need', user_id = user['user_id']) }}">I'm looking for a new piece for my car</a>
+<br />
+<a class="pieces-available-link" href="{{ url_for('pieces_available', user_id = user['user_id']) }}">See the pieces available</a>
+<br />
+<h2 class="your-profile-subtitles">Pieces you are selling</h2>
+<div class="pieces-container">
+    {% for piece in pieces_user_sells %}
+        <div class="piece-card">
+            <img class="image-owner-sells" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">
+            <td><strong>{{ piece["name"] }}</strong></td>
+            <br>
+            <td><strong>{{ piece["car_brand"] }}</strong></td>
+            <br>
+            <td><strong>{{ piece["car_model_set"] }}</strong></td>
+            <br>
+            <td>{{ piece["car_model"] }}</td>
+            <br>
+            <td>This piece was used in a {{ piece["car_year"] }} car</td>
+            <br>
+            <td>This piece was bought in {{ piece["piece_year"] }}</td>
+            <br>
+            <td><strong>€{{ piece["price"] }}</strong></td>
+            <td><a class="see-details-link" href="{{ url_for('piece', piece_id = piece['piece_id'], user_id = user['user_id']) }}">See details</a></td>
+            <br>
+            <td><a class="delete-piece-link" href="{{ url_for('delete_piece_I_sell', piece_id = piece['piece_id'], user_id = user['user_id']) }}">Delete this piece from my selling pieces</a></td>
+        </div>
+    {% endfor %}
+</div>
+<a class="add-new-piece-link" href="{{ url_for('add_piece_I_sell', user_id = user['user_id']) }}">I want to sell a new piece</a>
+{% endblock %}

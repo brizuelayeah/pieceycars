@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1 style="text-align: center;">Search pieces according to different parameters, like name, year...</h1>
+    <h2 style="text-align: center;">Here you can search pieces you like for your car, {{ user["username"] }}</h2>
+        <form action="{{ url_for('piece_filtered', user_id = user['user_id'])}}" method = "POST" novalidate>
+            <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
+            <script src="{{ url_for('static', filename='scripts/dependent_forms.js') }}"></script>
+
+            <label for="piece_name">Select piece name</label>
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" action="" name="piece_name">
+                <option value="0" selected disabled>Select</option>
+                <option value="Rear wing">Rear wing</option>
+                <option value="Bumpers">Bumpers</option>
+                <option value="Grilles">Grilles</option>
+                <option value="Fenders">Fenders</option>
+                <option value="Suspension">Suspension</option>
+                <option value="Rim">Rim</option>
+            </select>
+
+            <label for="piece_name">Select a car brand</label>
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="brand" name="brand">
+                <option value="0" selected disabled>Select</option>
+                <option value="bmw">BMW</option>
+                <option value="audi">AUDI</option>
+                <option value="mercedes">MERCEDES</option>
+                <option value="ford">FORD</option>
+                <option value="mazda">MAZDA</option>
+                <option value="volvo">VOLVO</option>
+                <option value="chevrolet">CHEVROLET</option>
+                <option value="dodge">DODGE</option>
+                <option value="seat">SEAT</option>
+            </select>
+    
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="bmw" name="model" class="dependency" hidden>
+                <option value="0" selected disabled></option>
+                <option value="x">X: X1 - X7</option>
+                <option value="iX">iX: iX1 - iX7</option>
+                <option value="m">M: M2 - M5</option>
+                <option value="e36">E36</option>
+                <option value="e46">E46</option>
+                <option value="e90-E93">E90 - E93</option>
+                <option value="e30">E36</option>
+                <option value="520d">520d</option>
+            </select>
+              
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="audi" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select AUDI model</option>
+                <option value="tT">TT</option>
+                <option value="a1-A4">A1 - A4</option>
+                <option value="a5-A8">A5 - A8</option>
+                <option value="rS3-RS5">RS3 - RS5</option>
+                <option value="rS6-RS8">RS6 - RS8</option>
+            </select>
+    
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="mercedes" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select MERCEDES model</option>
+                <option value="class A">Class A</option>
+                <option value="class B">Class B</option>
+                <option value="class C">Class C</option>
+            </select>
+    
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="ford" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select FORD model</option>
+                <option value="mustang">Mustang</option>
+                <option value="focus">Focus</option>
+                <option value="fiesta">Fiesta</option>
+                <option value="raptor">Raptor</option>
+                <option value="ranger">Ranger</option>
+            </select>
+
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="mazda" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select MAZDA model</option>
+                <option value="mazdaN">MAZDA3-MAZDA6</option>
+                <option value="cX">CX3 - CX30</option>
+                <option value="rX">RX7-RX8</option>
+            </select>
+
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="volvo" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select VOLVO model</option>
+                <option value="s">S60-S90</option>
+                <option value="v">V60-V90</option>
+                <option value="xC">XC40-XC90</option>
+            </select>
+
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="chevrolet" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select CHEVROLET model</option>
+                <option value="camaro">Camaro</option>
+                <option value="silverado">Silverado</option>
+                <option value="colorado">Colorado</option>
+            </select>
+
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="dodge" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select DODGE model</option>
+                <option value="challenger">Challenger</option>
+                <option value="charger">Charger</option>
+                <option value="dakota">Dakota</option>
+            </select>
+
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" id="seat" name="model" class="dependency" hidden>
+                <option value="0" selected disabled>Select SEAT model</option>
+                <option value="leon">Leon</option>
+                <option value="ibiza">Ibiza</option>
+                <option value="ateca">Ateca</option>
+            </select>
+
+            <label for="car_year">Type the car year:</label>
+            <input style="margin-right: auto; margin-left: auto;" type="number" id="car_year" name="car_year" min="1960" max="2023">
+
+            <label for="piece_year">Type the piece year:</label>
+            <input style="margin-right: auto; margin-left: auto;" type="number" id="piece_year" name="piece_year" min="1960" max="2023">
+
+            <input type="submit" value="Search" style="margin-right: auto; margin-left: auto; margin-top: 10px;">
+            <a href="{{ url_for('home_page', user_id = user['user_id']) }}">See all pieces in PieceyCars instead</a>
+        </form>
+    
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+  <h1 class="main_title" style="text-align: center;">Welcome to PieceyCars</h1>
+  <img src="{{ url_for('static', filename = 'main_logo.png') }}" alt="An image of a logo" class="logo_landing_page">
+  <h2 class="slogan">Your marketplace for buying and selling pieces for modifying your cars</h2>
+  <div class="login-register-container">
+    <div class="paragraph-container-login-register">
+      <div>
+        <p>I don't have an account yet</p>
+        <a class="register-login-from-register-login" href="{{ url_for('register') }}">Register</a>
+      </div>
+      <div>
+        <p>I already have an account</p>
+        <a class="register-login-from-register-login" href="{{ url_for('login') }}">Log in</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

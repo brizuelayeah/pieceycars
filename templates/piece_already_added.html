@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>We're sorry, {{ user["username"] }}</h1>
+<h2 class="added-successfully-subtitle">You had already added this piece to the pieces you want</h2>
+<div class="piece-individual-card-need">
+    <br>
+    <td>Piece:<strong> {{ piece_added_to_need["name"] }}</strong></td>
+    <br>
+    <td>Brand: <strong>{{ piece_added_to_need["car_brand"] }}</strong></td>
+    <br>
+    <td>Model set: <strong>{{ piece_added_to_need["car_model_set"] }}</strong></td>
+    <br>
+    <td>Piece year I want to look for this piece: {{ piece_added_to_need["piece_year"] }}</td>
+    <br>
+    <td>Piece year I want to look for this piece: {{ piece_added_to_need["piece_year"] }}</td>
+</div>
+
+<a class="add-new-piece-link" href="{{ url_for('add_piece_I_need', user_id = user['user_id']) }}">Add another piece you want</a>
+<br />
+
+{% endblock %}

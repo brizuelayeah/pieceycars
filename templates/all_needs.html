@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>List of needs</h1>
+    <table>
+        {% for need in needs %}
+            <tr>
+                <td>{{ need["need_id"] }}</td>
+                <td>{{ need["piece_needed"] }}</td>
+                <td>{{ need["wanter"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

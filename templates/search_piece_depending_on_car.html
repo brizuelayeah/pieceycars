@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    {% if cars_list %}
+    <h1 style="text-align: center;">Find the appropriate pieces for my cars</h1>
+    <h2 class="login-form-title" style="text-align: center;">Here you can search pieces you like for your car, {{ user["username"] }}</h2>
+        <form action="{{ url_for('show_pieces_for_car', user_id = user['user_id'])}}" method = "POST" novalidate>
+            <label for="select-car">Select for which of your cars you want to look pieces for:</label>
+            <select style="margin-right: auto; margin-left: auto;" style="width: 500px;" action="" name="cars">
+                {% for car in cars_list %}
+                    <option value="{{ car['car_id'] }}"">{{ car["brand"] }} {{ car["model"] }} {{car["year"]}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Search" style="margin-right: auto; margin-left: auto;">
+            <a href="{{ url_for('home_page', user_id = user['user_id']) }}">See all pieces in PieceyCars instead</a>
+        </form>
+    {% else %}
+    <h2>Hi, {{ user["username"] }}. </h2>
+        <p>It looks like you don't have any car registered yet</p>
+        <a href="{{ url_for('register_my_car', user_id = user['user_id'])}}">Register my car</a>
+    {% endif %}
+{% endblock %}

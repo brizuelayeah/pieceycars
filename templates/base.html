@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "utf-8" />
+        <title>PieceyCars App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'styles.css') }}" />
+    </head>
+    <body style="background-color: #f2f2f2;">
+        <header>
+            {% if g.user %}
+            <div class="menu-container">
+                <a href="{{ url_for('home_page', user_id = user['user_id']) }}">Home</a>
+                <a href="{{ url_for('your_profile', user_id = user['user_id']) }}">Your profile</a>
+                <a href="{{ url_for('logout') }}">Log out</a>
+            </div>
+            {% endif %}
+        </header>
+        <div class="developer-text">
+            <p>Developed by Óscar Brizuela, 2023</p>
+        </div>
+        {% block main_content %}
+        {% endblock %}
+    </body>
+</html>

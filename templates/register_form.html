@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1 style="text-align: center;">Register</h1>
+    <div class="register-form">
+        <form action="" method = "POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.username.label }}
+            {{ form.username() }}
+            {% for error in form.username.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.password.label }}
+            {{ form.password() }}
+            {% for error in form.password.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.password2.label }}
+            {{ form.password2() }}
+            {% for error in form.password2.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.mail.label }}
+            {{ form.mail() }}
+            {% for error in form.mail.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.phone.label }}
+            {{ form.phone() }}
+            {% for error in form.phone.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.submit() }}
+        </form>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <a class="already-link" href="{{ url_for('login') }}">Do you already have an account? Log in</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Home page</h1>
+    <h2 class="home-page-subtitle">Hi, {{ user["username"] }}. These are all the pieces available in PieceyCars</h2>
+    <div class="home-page-links-container" style="display: inline-block;
+    align-items: center;">
+        <a class="search_piece_depending_on_car-link" href="{{ url_for('search_piece_depending_on_car', user_id = user['user_id']) }}">I want a custom search for my cars</a>
+        <a class="piece-filter-link" href="{{ url_for('piece_filter', user_id = user['user_id']) }}">I want to do a search filtering by name, year...</a>
+    </div>
+    <div class="pieces-container">
+        {% for piece in all_pieces %}
+        <div class="piece-card">
+            <img class="all-pieces-images" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">
+                <h3>{{ piece ["name"] }}</h3>
+                <strong>{{ piece ["car_brand"] }}</strong>
+                <strong>{{ piece ["car_model_set"] }}</strong>
+                <br>
+                <td>{{ piece ["car_model"] }}</td>
+                <br>
+                <td>This piece was used in a {{ piece ["car_year"] }} car</td>
+                <br>
+                <td>This piece was bought in  {{ piece["piece_year"] }}</td>
+                <br>
+                <a class="piece-owner-profile-link" href="{{ url_for('piece_owner_profile', user_id = user['user_id'], user_visited_id = piece['owner']) }}"><strong>{{ piece["username"] }}</strong></a>
+                <h3>€{{ piece ["price"] }}</h3>
+                <td><a class="see-details-link" href="{{ url_for('piece', piece_id = piece['piece_id'], user_id = user['user_id']) }}">See details</a></td>
+            <br />
+        </div>           
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>Congratulations, {{ user["username"] }}!</h1>
+<h2 class="added-successfully-subtitle">You added a new piece you want successfully!</h2>
+<div class="piece-individual-card">
+    <br>
+    <td>Piece:<strong> {{ piece_added_to_need["name"] }}</strong></td>
+    <br>
+    <td>Brand: <strong>{{ piece_added_to_need["car_brand"] }}</strong></td>
+    <br>
+    <td>Model set: <strong>{{ piece_added_to_need["car_model_set"] }}</strong></td>
+    <br>
+    <td>Piece year I want to look for this piece: {{ piece_added_to_need["piece_year"] }}</td>
+    <br>
+    <td>Piece year I want to look for this piece: {{ piece_added_to_need["piece_year"] }}</td>
+</div>
+{% if pieces_I_need %}
+<h2 class="your-profile-subtitles">Here there are all the pieces you are looking for:</h2>
+    <div class="pieces-container">
+        {% for piece in pieces_I_need %}
+        <div class="piece-card">
+            <td><strong>Piece name: {{ piece["name"] }}</strong></td>
+            <br>
+            <td><strong>Car brand: {{ piece["car_brand"] }}</strong></td>
+            <br>
+            <td><strong>Car model set: {{ piece["car_model_set"] }}</strong></td>
+            <br>
+            <td>Car model: {{ piece["car_model"] }}</td>
+            <br>
+            <td>Car year I want to look for this piece: {{ piece["car_year"] }}</td>
+            <br>
+            <td>Piece year I want to look for this piece: {{ piece["piece_year"] }}</td>
+            <br>
+            <td><a class="delete-piece-link" href="{{ url_for('delete_piece_I_sell', piece_id = piece['piece_id'], user_id = user['user_id']) }}">Delete this piece from my selling pieces</a></td>
+        </div>
+        {% endfor %}
+    </div>
+    <br />
+    <br />
+{% endif %}
+
+<a class="pieces-available-link" href="{{ url_for('pieces_available', user_id = user['user_id']) }}">See the pieces available</a>
+<a class="add-new-piece-link" href="{{ url_for('add_piece_I_need', user_id = user['user_id']) }}">I'm looking for another piece for my car</a>
+
+{% endblock %}

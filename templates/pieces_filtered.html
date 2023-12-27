@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    {% if pieces_filtered %}
+        <h1>These are the results of your search, {{ user["username"] }}:</h1>
+        <div class="pieces-container">
+            {% for piece in pieces_filtered %}
+                <div class="piece-card">
+                    <img class="all-pieces-images" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">  
+                    <h3>{{ piece["name"] }}</h3>
+                    <strong>{{ piece["car_brand"] }}</strong>
+                    <strong>{{ piece["car_model_set"] }}</strong>
+                    <br>
+                    <td>This piece was used in a {{ piece["car_year"] }} car</td>
+                    <br>
+                    <td>This piece was bought in {{ piece["piece_year"] }}</td>
+                    <br>
+                    <a class="piece-owner-profile-link" href="{{ url_for('piece_owner_profile', user_visited_id = piece['owner'], user_id = user['user_id']) }}"><strong>{{ piece["username"] }}</strong></a>
+                    <h3>€{{ piece["price"] }}</h3>
+                    <td><a class="see-details-link" href="{{ url_for('piece', piece_id = piece['piece_id'], user_id = user['user_id']) }}">See details</a></td>
+                </div>
+            {% endfor %}
+        </div>
+                   
+    {% else %}
+        <h1>Sorry, we didn't find any piece with your specifications</h1>
+    {% endif %}
+    <div class="not-found-links">
+        <a class="add-new-piece-link" href="{{ url_for('piece_filter', user_id = user['user_id']) }}">Search for another piece</a>
+        <a class="search_piece_depending_on_car-link" href="{{ url_for('search_piece_depending_on_car', user_id = user['user_id']) }}">Search for a piece depending on my cars</a>
+    </div>
+    <h3 style="text-align: left;">Your search history in this session:</h3>
+    <table>
+        {% for search in recent_searches %}
+            <tr>
+                <td>{{ search }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

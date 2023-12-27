@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1 style="text-align: center;">Login</h1>
+        <div class="login-form">
+            <form action="" method = "POST" novalidate>
+                {{ form.hidden_tag() }}
+                {{ form.username.label }}
+                {{ form.username() }}
+                {% for error in form.username.errors %}
+                    {{ error }}
+                {% endfor %}
+                <br />
+                {{ form.password.label }}
+                {{ form.password() }}
+                {% for error in form.password.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.submit() }}
+            </form>
+        </div>
+    <div style="display: flex; justify-content: center;">
+        <a class="already-link" href="{{ url_for('register') }}">Don't have an account yet? Register</a>
+    </div>
+{% endblock %}

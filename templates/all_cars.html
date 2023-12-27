@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>List of cars</h1>
+    <table>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car["car_id"] }}</td>
+                <td>{{ car["brand"] }}</td>
+                <td>{{ car["model_set"] }}</td>
+                <td>{{ car["model"] }}</td>
+                <td>{{ car["year"] }}</td>
+                <td>{{ car["owner"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

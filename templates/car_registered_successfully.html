@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>Congratulations, {{ user["username"] }}!</h1>
+<h2>You added a new car in your profile</h2>
+<div class="car-card">
+    <img class="image-owner-cars" src="{{ url_for('static', filename = car_added['image_URL']) }}" alt="IMAGE">
+    <td><strong>{{ car_added["brand"] }}</strong></td>
+    <td><strong>{{ car_added["model_set"] }}</strong></td>
+    <td>{{ car_added["model"] }}</td>
+    <td>{{ car_added["year"] }}</td>
+    <td><a class="see-details-link" href="{{ url_for('car', car_id = car_added['car_id'], user_id = user['user_id']) }}">See details</a></td>
+    <td><a class="delete-piece-link" href="{{ url_for('delete_car', car_id = car_added['car_id'], user_id = user['user_id']) }}">Delete this car from my cars</a></td>
+</div>
+
+<h2>Your cars</h2>
+<div class="cars-container">
+    {% for car in user_cars_list %}
+        <div class="car-card">
+            <img class="image-owner-cars" src="{{ url_for('static', filename = car['image_URL']) }}" alt="IMAGE">
+            <td><strong>{{ car["brand"] }}</strong></td>
+            <td><strong>{{ car["model_set"] }}</strong></td>
+            <td>{{ car["model"] }}</td>
+            <td>{{ car["year"] }}</td>
+            <td><a class="see-details-link" href="{{ url_for('car', car_id = car['car_id'], user_id = user['user_id']) }}">See details</a></td>
+            <td><a class="delete-piece-link" href="{{ url_for('delete_car', car_id = car['car_id'], user_id = user['user_id']) }}">Delete this car from my cars</a></td>
+        </div>
+    {% endfor %}
+{% endblock %}

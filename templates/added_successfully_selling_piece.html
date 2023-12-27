@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>Congratulations, {{ user["username"] }}!</h1>
+<h2 class="added-successfully-subtitle">You added a new piece into the market successfully</h2>
+<div class="piece-individual-card">
+    <br>
+    <td>Piece:<strong> {{ piece_registered["name"] }}</strong></td>
+    <br>
+    <td>Brand: <strong>{{ piece_registered["car_brand"] }}</strong></td>
+    <br>
+    <td>Model set: <strong>{{ piece_registered["car_model_set"] }}</strong></td>
+    <br>
+    <td>Model: {{ piece_registered["car_model"] }}</td>
+    <br>
+    <td>Piece year: {{ piece_registered["piece_year"] }}</td>
+    <br>
+    <td>Car year: {{ piece_registered["car_year"] }}</td>
+    <br>
+    <td>Price: <strong>€{{ piece_registered["price"] }}</strong></td>
+</div>
+{% if pieces_I_sell %}
+<h2 class="your-profile-subtitles">Here there are all the pieces you are selling:</h3>
+    <div class="pieces-container">
+        {% for piece in pieces_I_sell %}
+        <div class="piece-card">
+            <img class="image-owner-sells" src="{{ url_for('static', filename = piece['image_URL']) }}" alt="IMAGE">
+            <td><strong>{{ piece["name"] }}</strong></td>
+            <br>
+            <td><strong>{{ piece["car_brand"] }}</strong></td>
+            <br>
+            <td><strong>{{ piece["car_model_set"] }}</strong></td>
+            <br>
+            <td>{{ piece["car_model"] }}</td>
+            <br>
+            <td>This piece was used in a {{ piece["car_year"] }} car</td>
+            <br>
+            <td>This piece was bought in {{ piece["piece_year"] }}</td>
+            <br>
+            <td><strong>€{{ piece["price"] }}</strong></td>
+            <td><a class="see-details-link" href="{{ url_for('piece', piece_id = piece['piece_id'], user_id = user['user_id']) }}">See details</a></td>
+            <br>
+            <td><a class="delete-piece-link" href="{{ url_for('delete_piece_I_sell', piece_id = piece['piece_id'], user_id = user['user_id']) }}">Delete this piece from my selling pieces</a></td>
+        </div>
+        {% endfor %}
+    </div>
+        
+{% endif %}
+
+<a class="add-new-piece-link" style="margin-top: 20px;" href="{{ url_for('add_piece_I_sell', user_id = user['user_id']) }}">I want to sell another piece</a>
+{% endblock %}
